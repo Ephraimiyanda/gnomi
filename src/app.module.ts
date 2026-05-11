@@ -6,9 +6,15 @@ import { TopicController } from './topic/topic.controller';
 import { TopicModule } from './topic/topic.module';
 import { DebateModule } from './debate/debate.module';
 import { AiJudgeModule } from './ai-judge/ai-judge.module';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 
 @Module({
-  imports: [TopicModule, DebateModule, AiJudgeModule],
+  imports: [
+    EventEmitterModule.forRoot(),
+    TopicModule,
+    DebateModule,
+    AiJudgeModule,
+  ],
   controllers: [AppController, TopicController],
   providers: [AppService, TopicService],
 })

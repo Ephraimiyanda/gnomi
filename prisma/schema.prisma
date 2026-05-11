@@ -71,8 +71,9 @@ model AIReport {
   id               String        @id @default(uuid())
   debateSessionId  String        @unique
   debateSession    DebateSession @relation(fields: [debateSessionId], references: [id])
-  analysisJson     Json          // Stores fallacies, scores, and rhetorical moves
-  overallWinnerId  String?
+  analysisJson     Json          // Stores fallacies, scores, reasoning
+  winnerId         String
+  createdAt        DateTime      @default(now())
 }
 
 enum DebateStatus {
